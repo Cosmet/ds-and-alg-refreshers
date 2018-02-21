@@ -1,1 +1,1 @@
-# ds-and-alg-refreshers
+# Data Structures and Algorithms Refresher Practice
