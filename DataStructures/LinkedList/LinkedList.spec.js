@@ -105,7 +105,7 @@ describe('Linked List', () => {
       fullList.addToTail(40);
 
       expect(fullList.tail.value).to.equal(40);
-      expect(oldTail.next).to.equal(oldTail);
+      expect(oldTail.next).to.equal(fullList.tail);
     });
 
     it('Adds multiples nodes to tail properly', () => {
