@@ -28,7 +28,9 @@ class LinkedList extends Node {
 
   removeTail() {
     const removedTail = this.tail;
-    if (!removedTail.previous) {
+    if (!removedTail) {
+      return null;
+    } else if (!removedTail.previous) {
       this.tail = null;
       this.head = null;
     } else {
@@ -53,7 +55,9 @@ class LinkedList extends Node {
 
   removeHead() {
     const removedHead = this.head;
-    if (!removedHead.next) {
+    if (!removedHead) {
+      return null;
+    } else if (!removedHead.next) {
       this.head = null;
       this.tail = null;
     } else {
@@ -63,12 +67,15 @@ class LinkedList extends Node {
     return removedHead.value;
   }
 
-  search(val) {
+  search(searchValue) {
     let currentNode = this.head;
 
     while (currentNode) {
-      if (currentNode.value === val) {
-        return val;
+      const { value } = currentNode;
+      if (typeof searchValue === 'function' && searchValue(value)) {
+        return value;
+      } else if (value === searchValue) {
+        return value;
       }
       currentNode = currentNode.next;
     }

@@ -163,6 +163,10 @@ describe('Linked List', () => {
       expect(fullList.head).to.equal(null);
       expect(fullList.tail).to.equal(null);
     });
+
+    it('If there is no tail returns NULL', () => {
+      expect(emptyList.removeTail()).to.equal(null);
+    });
   });
 
   describe('Add To Head', () => {
@@ -272,6 +276,10 @@ describe('Linked List', () => {
       expect(fullList.head).to.equal(null);
       expect(fullList.tail).to.equal(null);
     });
+
+    it('If there is no head returns NULL', () => {
+      expect(emptyList.removeHead()).to.equal(null);
+    });
   });
 
   describe('Search', () => {
@@ -282,12 +290,22 @@ describe('Linked List', () => {
       assert.isFunction(fullList.search);
     });
 
-    it('Returns the correct value', () => {
+    it('Returns the correct value given a value', () => {
       const correctValue = 10;
       const incorrectValue = 'wrong';
 
       expect(fullList.search(correctValue)).to.equal(correctValue);
       expect(fullList.search(incorrectValue)).to.equal(null);
+    });
+
+    it('Returns the correct value given a function', () => {
+      const correctValue = 10;
+      const incorrectValue = 'wrong';
+      const correctFunc = val => val % correctValue === 0;
+      const incorrectFunc = val => val === incorrectValue;
+
+      expect(fullList.search(correctFunc)).to.equal(correctValue);
+      expect(fullList.search(incorrectFunc)).to.equal(null);
     });
   });
 });
